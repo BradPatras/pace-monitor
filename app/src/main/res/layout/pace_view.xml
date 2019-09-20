@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline android:id="@+id/center_guide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="50"
+        />
+
+    <TextView
+        android:id="@+id/ms_delimiter_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/ms_delimiter"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textAlignment="center"
+        android:includeFontPadding="false"/>
+
+    <TextView
+        android:id="@+id/minutes_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--"
+        android:textAlignment="viewEnd"
+        android:textSize="34sp"
+        app:firstBaselineToTopHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/ms_delimiter_tv"
+        app:layout_constraintRight_toLeftOf="@id/ms_delimiter_tv"
+        app:layout_constraintTop_toTopOf="@id/ms_delimiter_tv"
+        android:includeFontPadding="false"/>
+
+    <TextView
+        android:id="@+id/seconds_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--"
+        android:textAlignment="viewStart"
+        android:textSize="34sp"
+        app:firstBaselineToTopHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/ms_delimiter_tv"
+        app:layout_constraintLeft_toRightOf="@id/ms_delimiter_tv"
+        app:layout_constraintTop_toTopOf="@id/ms_delimiter_tv"
+        android:includeFontPadding="false"/>
+
+    <TextView
+        android:id="@+id/label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/minutes_tv"
+        app:layout_constraintRight_toLeftOf="@id/ms_delimiter_tv"
+        app:layout_constraintTop_toTopOf="@id/minutes_tv"
+        android:paddingBottom="2dp"
+        android:textSize="12sp"
+        android:includeFontPadding="false"
+        />
+
+    <TextView
+        android:id="@+id/unit_numerator_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="2dp"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/unit_denominator_tv"
+        app:layout_constraintLeft_toRightOf="@id/seconds_tv"
+        android:includeFontPadding="false"/>
+
+    <TextView
+        android:id="@+id/unit_vinculum_tv"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@id/seconds_tv"
+        app:layout_constraintLeft_toLeftOf="@id/unit_numerator_tv"
+        app:layout_constraintRight_toRightOf="@id/unit_numerator_tv"
+        app:layout_constraintTop_toTopOf="@id/seconds_tv" />
+
+    <TextView
+        android:id="@+id/unit_denominator_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/unit_numerator_tv"
+        app:layout_constraintStart_toStartOf="@+id/unit_numerator_tv"
+        app:layout_constraintTop_toBottomOf="@id/unit_vinculum_tv"
+        android:includeFontPadding="false"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
