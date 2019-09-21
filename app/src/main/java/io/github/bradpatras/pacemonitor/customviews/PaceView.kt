@@ -1,6 +1,7 @@
 package io.github.bradpatras.pacemonitor.customviews
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,12 +25,13 @@ class PaceView : ConstraintLayout {
         get() = _labelText
         set(value) {
             _labelText = value
+            setLabel(value ?: "")
         }
 
     var distanceUnit: DistanceUnit = DistanceUnit.MI
         set(value) {
             field = value
-            unit_tv.text = value.abbreviation
+            unit_tv.text = resources.getString(R.string.per_unit, value.abbreviation)
         }
 
     constructor(context: Context) : super(context) {
@@ -45,11 +47,11 @@ class PaceView : ConstraintLayout {
     }
 
     private fun init(attrs: AttributeSet?, defStyle: Int) {
-        val a = context.obtainStyledAttributes(attrs, R.styleable.PaceView, defStyle, 0)
-        _labelText = a.getString(R.styleable.PaceView_labelText)
-        a.recycle()
-
         View.inflate(context, R.layout.pace_view, this)
+        val a = context.obtainStyledAttributes(attrs, R.styleable.PaceView, defStyle, 0)
+        labelText = a.getString(R.styleable.PaceView_labelText)
+        distanceUnit = distanceUnit
+        a.recycle()
     }
 
     fun setMinutes(minutes: Int?) {

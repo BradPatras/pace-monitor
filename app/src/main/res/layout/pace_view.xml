@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="@string/ms_delimiter"
-        android:textSize="64sp"
+        android:textSize="@dimen/pace_time_font_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="--"
         android:textAlignment="viewEnd"
-        android:textSize="64sp"
+        android:textSize="@dimen/pace_time_font_size"
         app:firstBaselineToTopHeight="0dp"
         app:layout_constraintBottom_toBottomOf="@id/ms_delimiter_tv"
         app:layout_constraintRight_toLeftOf="@id/ms_delimiter_tv"
@@ -45,12 +45,12 @@
         android:layout_height="wrap_content"
         android:text="--"
         android:textAlignment="viewStart"
-        android:textSize="64sp"
+        android:textSize="@dimen/pace_time_font_size"
         app:firstBaselineToTopHeight="0dp"
         app:layout_constraintBottom_toBottomOf="@id/ms_delimiter_tv"
         app:layout_constraintLeft_toRightOf="@id/ms_delimiter_tv"
         app:layout_constraintTop_toTopOf="@id/ms_delimiter_tv"
-        android:includeFontPadding="false"/>
+        android:includeFontPadding="false" />
 
     <TextView
         android:id="@+id/label_tv"
@@ -60,18 +60,20 @@
         app:layout_constraintRight_toLeftOf="@id/ms_delimiter_tv"
         app:layout_constraintTop_toTopOf="@id/minutes_tv"
         android:paddingBottom="2dp"
-        android:textSize="12sp"
+        android:textSize="@dimen/pace_label_font_size"
         android:includeFontPadding="false"
         />
 
     <TextView
         android:id="@+id/unit_tv"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/seconds_tv"
         app:layout_constraintLeft_toRightOf="@id/seconds_tv"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/seconds_tv" />
+        app:layout_constraintTop_toTopOf="@id/seconds_tv"
+        android:layout_marginLeft="4dp"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/pace_label_font_size"/>
 
 </merge>

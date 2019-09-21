@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Pace Monitor</string>
     <string name="ms_delimiter">:</string>
+    <string name="per_unit">/%1$s</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
 </resources>
