@@ -1,29 +1,24 @@
 package io.github.bradpatras.pacemonitor.customviews
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.drawable.Drawable
-import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import io.github.bradpatras.pacemonitor.R
+import kotlinx.android.synthetic.main.pace_view.view.*
 
-/**
- * TODO: document your custom view class.
- */
-class PaceView : View {
+private const val TIME_PLACEHOLDER: String = "--"
 
-    private var _labelText: String? = null // TODO: use a default from R.string...
-    private var _labelFontColor: Int = Color.DKGRAY
+class PaceView : ConstraintLayout {
+    enum class DistanceUnit(val abbreviation: String) {
+        KM("km"),
+        MI("mi")
+    }
 
-    private var textPaint: TextPaint? = null
-    private var textWidth: Float = 0f
-    private var textHeight: Float = 0f
+    private var _labelText: String? = ""
 
     /**
-     * The text to draw
+     * The text above the time labels
      */
     var labelText: String?
         get() = _labelText
@@ -31,19 +26,11 @@ class PaceView : View {
             _labelText = value
         }
 
-    /**
-     * The font color
-     */
-    var labelFontColor: Int
-        get() = _labelFontColor
+    var distanceUnit: DistanceUnit = DistanceUnit.MI
         set(value) {
-            _labelFontColor = value
+            field = value
+            unit_tv.text = value.abbreviation
         }
-
-    /**
-     * In the example view, this drawable is drawn above the text.
-     */
-    var exampleDrawable: Drawable? = null
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -53,31 +40,35 @@ class PaceView : View {
         init(attrs, 0)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
-        context,
-        attrs,
-        defStyle
-    ) {
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
         init(attrs, defStyle)
     }
 
     private fun init(attrs: AttributeSet?, defStyle: Int) {
-        // Load attributes
-        val a = context.obtainStyledAttributes(
-            attrs, R.styleable.PaceView, defStyle, 0
-        )
-
-        _labelText = a.getString(
-            R.styleable.PaceView_labelText
-        )
-
-//        // Use getDimensionPixelSize or getDimensionPixelOffset when dealing with
-//        // values that should fall on pixel boundaries.
-//        _exampleDimension = a.getDimension(
-//            R.styleable.PaceView_exampleDimension,
-//            exampleDimension
-//        )
-
+        val a = context.obtainStyledAttributes(attrs, R.styleable.PaceView, defStyle, 0)
+        _labelText = a.getString(R.styleable.PaceView_labelText)
         a.recycle()
+
+        View.inflate(context, R.layout.pace_view, this)
+    }
+
+    fun setMinutes(minutes: Int?) {
+        if (minutes is Int) {
+            minutes_tv.text = "$minutes"
+        } else {
+            minutes_tv.text = TIME_PLACEHOLDER
+        }
+    }
+
+    fun setSeconds(seconds: Int?) {
+        if (seconds is Int) {
+            seconds_tv.text = "$seconds"
+        } else {
+            seconds_tv.text = TIME_PLACEHOLDER
+        }
+    }
+
+    fun setLabel(label: String) {
+        label_tv.text = label
     }
 }

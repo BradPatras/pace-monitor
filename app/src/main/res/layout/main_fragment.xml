@@ -5,4 +5,75 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainFragment"/>
+    tools:context=".ui.main.MainFragment">
+
+    <androidx.constraintlayout.widget.Guideline android:id="@+id/center_guide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintGuide_percent=".5"
+        android:orientation="horizontal"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/first_fifth_guide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".2"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/last_fifth_guide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".8"
+        />
+
+    <io.github.bradpatras.pacemonitor.customviews.PaceView
+        android:id="@+id/five_sec_pace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/thirty_sec_pace"
+        android:layout_marginBottom="24dp"
+        />
+
+    <io.github.bradpatras.pacemonitor.customviews.PaceView
+        android:id="@+id/thirty_sec_pace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/sixty_sec_pace"
+        android:layout_marginBottom="24dp"
+        />
+
+    <io.github.bradpatras.pacemonitor.customviews.PaceView
+        android:id="@+id/sixty_sec_pace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/center_guide"
+        app:layout_constraintBottom_toBottomOf="@id/center_guide"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sixty_sec_pace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="36dp"
+        android:paddingTop="26dp"
+        android:paddingBottom="26dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:textSize="42sp"
+        android:textColor="@android:color/white"
+        android:text="Start"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

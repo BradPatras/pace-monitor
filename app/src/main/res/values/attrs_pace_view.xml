@@ -1,7 +1,5 @@
 <resources>
     <declare-styleable name="PaceView">
         <attr name="labelText" format="string" />
-        <attr name="timeFontColor" format="color" />
-        <attr name="labelFontColor" format="color" />
     </declare-styleable>
 </resources>
