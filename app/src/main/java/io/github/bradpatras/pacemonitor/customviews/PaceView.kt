@@ -6,11 +6,15 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import io.github.bradpatras.pacemonitor.R
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.pace_view.view.*
+import java.text.DecimalFormat
 
 private const val TIME_PLACEHOLDER: String = "--"
 
 class PaceView : ConstraintLayout {
+    private val secondsFormat = DecimalFormat("00")
+
     enum class DistanceUnit(val abbreviation: String) {
         KM("km"),
         MI("mi")
@@ -34,6 +38,9 @@ class PaceView : ConstraintLayout {
             unit_tv.text = resources.getString(R.string.per_unit, value.abbreviation)
         }
 
+    var paceMinutesConsumer: Consumer<Int?> = Consumer(this::setMinutes)
+    var paceSecondsConsumer: Consumer<Int?> = Consumer(this::setSeconds)
+
     constructor(context: Context) : super(context) {
         init(null, 0)
     }
@@ -54,7 +61,7 @@ class PaceView : ConstraintLayout {
         a.recycle()
     }
 
-    fun setMinutes(minutes: Int?) {
+    private fun setMinutes(minutes: Int?) {
         if (minutes is Int) {
             minutes_tv.text = "$minutes"
         } else {
@@ -62,9 +69,10 @@ class PaceView : ConstraintLayout {
         }
     }
 
-    fun setSeconds(seconds: Int?) {
+    private fun setSeconds(seconds: Int?) {
         if (seconds is Int) {
-            seconds_tv.text = "$seconds"
+
+            seconds_tv.text = secondsFormat.format(seconds)
         } else {
             seconds_tv.text = TIME_PLACEHOLDER
         }
