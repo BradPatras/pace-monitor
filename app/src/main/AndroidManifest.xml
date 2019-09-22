@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.location.LocationService"/>
+        <service android:name=".services.speed.SpeedReportService"/>
 
     </application>
 

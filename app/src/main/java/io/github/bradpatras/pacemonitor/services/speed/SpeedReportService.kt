@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.services.location
+package io.github.bradpatras.pacemonitor.services.speed
 
 import android.app.Service
 import android.content.Intent
@@ -9,17 +9,19 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import io.github.bradpatras.pacemonitor.events.SpeedReportEvents
+import org.greenrobot.eventbus.EventBus
 
 private const val REQUEST_INTERVAL: Long = 1000
 private const val REQUEST_MAX_WAIT: Long = 5000
 private const val REQUEST_FASTEST_INTERVAL: Long = 500
 
-class LocationService : Service() {
+class SpeedReportService : Service() {
 
     private var speeds: MutableList<Pair<Long, Float>> = mutableListOf()
 
     private val fusedLocation by lazy {
-        LocationServices.getFusedLocationProviderClient(this@LocationService)
+        LocationServices.getFusedLocationProviderClient(this@SpeedReportService)
     }
 
     private val locationCallback by lazy {
@@ -84,15 +86,15 @@ class LocationService : Service() {
     }
 
     private fun postSixtyAvg(avg: Float) {
-        // todo post update
+        EventBus.getDefault().post(SpeedReportEvents.SixtySecondReport(avg))
     }
 
     private fun postThirtyAvg(avg: Float) {
-        // todo post update
+        EventBus.getDefault().post(SpeedReportEvents.ThirtySecondReport(avg))
     }
 
     private fun postFiveAvg(avg: Float) {
-        // todo post update
+        EventBus.getDefault().post(SpeedReportEvents.FiveSecondReport(avg))
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
