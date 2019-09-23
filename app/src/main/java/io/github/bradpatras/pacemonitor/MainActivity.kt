@@ -1,10 +1,16 @@
 package io.github.bradpatras.pacemonitor
 
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import android.view.WindowManager
+import io.github.bradpatras.pacemonitor.events.PermissionEvents
 import io.github.bradpatras.pacemonitor.ui.main.MainFragment
+import io.github.bradpatras.pacemonitor.util.PermissionHelper
+import org.greenrobot.eventbus.EventBus
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +30,9 @@ class MainActivity : AppCompatActivity() {
             this.window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
                     WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
         }
-    }
 
+        PermissionHelper.getInstance(this).checkLocationPermissions {
+            EventBus.getDefault().postSticky(PermissionEvents.LocationPermissionGrantedEvent)
+        }
+    }
 }

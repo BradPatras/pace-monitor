@@ -13,11 +13,11 @@ import io.github.bradpatras.pacemonitor.events.SpeedReportEvents
 import org.greenrobot.eventbus.EventBus
 
 private const val REQUEST_INTERVAL: Long = 1000
-private const val REQUEST_MAX_WAIT: Long = 5000
-private const val REQUEST_FASTEST_INTERVAL: Long = 500
+private const val REQUEST_MAX_WAIT: Long = 1000
+private const val REQUEST_FASTEST_INTERVAL: Long = 250
 
 class SpeedReportService : Service() {
-
+    private var isRunning: Boolean = false
     private var speeds: MutableList<Pair<Long, Float>> = mutableListOf()
 
     private val fusedLocation by lazy {
@@ -53,7 +53,7 @@ class SpeedReportService : Service() {
 
         // trim down the speed reports to only include reports within the last 60 seconds
         val newStartIndex = speeds.indexOfFirst { it.first > expirationTimeMillis }
-        speeds = speeds.subList(newStartIndex, speeds.lastIndex)
+        speeds = speeds.subList(newStartIndex, speeds.count())
 
         // compute averages
         var sixtySum = 0f
@@ -80,9 +80,16 @@ class SpeedReportService : Service() {
             }
         }
 
-        postSixtyAvg(sixtySum / speeds.count().toFloat())
-        postThirtyAvg(thirtySum / thirtyCount.toFloat())
-        postFiveAvg(fiveSum / fiveCount.toFloat())
+        if (speeds.isNotEmpty()) {
+            postSixtyAvg(sixtySum / speeds.count().toFloat())
+        }
+        if (thirtyCount > 0) {
+            postThirtyAvg(thirtySum / thirtyCount.toFloat())
+        }
+        if (fiveCount > 0) {
+            postFiveAvg(fiveSum / fiveCount.toFloat())
+        }
+
     }
 
     private fun postSixtyAvg(avg: Float) {
@@ -98,6 +105,15 @@ class SpeedReportService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (isRunning) return  super.onStartCommand(intent, flags, startId)
+        isRunning = true
+
+        startLocationRequests()
+
+        return super.onStartCommand(intent, flags, startId)
+    }
+
+    fun startLocationRequests() {
         val locationRequest = LocationRequest()
             .setInterval(REQUEST_INTERVAL)
             .setMaxWaitTime(REQUEST_MAX_WAIT)
@@ -107,8 +123,6 @@ class SpeedReportService : Service() {
         fusedLocation.requestLocationUpdates(locationRequest,
             locationCallback,
             mainLooper)
-
-        return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onBind(p0: Intent?): IBinder? {

@@ -36,6 +36,12 @@ class MainViewModel : ViewModel() {
         EventBus.getDefault().unregister(this)
     }
 
+    fun publishLastReports() {
+        fiveSpeed = fiveSpeed
+        thirtySpeed = thirtySpeed
+        sixtySpeed = sixtySpeed
+    }
+
     @Subscribe
     fun onFiveSecondReportEvent(event: SpeedReportEvents.FiveSecondReport) {
         fiveSpeed = event.speed
