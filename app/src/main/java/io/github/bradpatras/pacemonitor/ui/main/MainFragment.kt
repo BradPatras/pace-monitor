@@ -1,19 +1,22 @@
 package io.github.bradpatras.pacemonitor.ui.main
 
+import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import io.github.bradpatras.pacemonitor.R
 import io.github.bradpatras.pacemonitor.customviews.PaceView
+import io.github.bradpatras.pacemonitor.events.PermissionEvents
 import io.github.bradpatras.pacemonitor.services.speed.SpeedReportService
 import io.github.bradpatras.pacemonitor.util.SpeedConversionHelper
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.main_fragment.*
+import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
 class MainFragment : Fragment() {
@@ -38,6 +41,16 @@ class MainFragment : Fragment() {
         compositeDisposable.clear()
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        EventBus.getDefault().unregister(this)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
@@ -50,7 +63,7 @@ class MainFragment : Fragment() {
     }
 
     @Subscribe(sticky = true)
-    private fun onLocationPermissionGranted() {
+    fun onLocationPermissionGranted(event: PermissionEvents.LocationPermissionGrantedEvent) {
         context?.let { ctx ->
             val intent = Intent(ctx, SpeedReportService::class.java)
             ctx.startService(intent)

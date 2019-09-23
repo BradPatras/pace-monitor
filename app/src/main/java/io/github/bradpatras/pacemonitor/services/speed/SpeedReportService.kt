@@ -89,7 +89,6 @@ class SpeedReportService : Service() {
         if (fiveCount > 0) {
             postFiveAvg(fiveSum / fiveCount.toFloat())
         }
-
     }
 
     private fun postSixtyAvg(avg: Float) {
@@ -105,7 +104,7 @@ class SpeedReportService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (isRunning) return  super.onStartCommand(intent, flags, startId)
+        if (isRunning) return super.onStartCommand(intent, flags, startId)
         isRunning = true
 
         startLocationRequests()
@@ -113,7 +112,7 @@ class SpeedReportService : Service() {
         return super.onStartCommand(intent, flags, startId)
     }
 
-    fun startLocationRequests() {
+    private fun startLocationRequests() {
         val locationRequest = LocationRequest()
             .setInterval(REQUEST_INTERVAL)
             .setMaxWaitTime(REQUEST_MAX_WAIT)

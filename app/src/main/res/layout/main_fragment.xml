@@ -53,4 +53,16 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
+    <TextView
+        android:id="@+id/github_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="github.com/BradPatras/pace-monitor"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottom_guide" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
