@@ -80,13 +80,13 @@ class SpeedReportService : Service() {
             }
         }
 
-        if (speeds.isNotEmpty()) {
+        if (speeds.count() > 30) {
             postSixtyAvg(sixtySum / speeds.count().toFloat())
         }
-        if (thirtyCount > 0) {
+        if (thirtyCount > 15) {
             postThirtyAvg(thirtySum / thirtyCount.toFloat())
         }
-        if (fiveCount > 0) {
+        if (fiveCount > 3) {
             postFiveAvg(fiveSum / fiveCount.toFloat())
         }
     }
@@ -122,6 +122,11 @@ class SpeedReportService : Service() {
         fusedLocation.requestLocationUpdates(locationRequest,
             locationCallback,
             mainLooper)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fusedLocation.removeLocationUpdates(locationCallback)
     }
 
     override fun onBind(p0: Intent?): IBinder? {
