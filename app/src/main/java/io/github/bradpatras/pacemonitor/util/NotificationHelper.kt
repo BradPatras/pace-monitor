@@ -10,7 +10,7 @@ import io.github.bradpatras.pacemonitor.R
 
 class NotificationHelper {
     companion object {
-        val CHANNEL_ID = "io.github.bradpatras.pacemonitor.util"
+        const val CHANNEL_ID = "io.github.bradpatras.pacemonitor.util"
 
         fun getNotification(context: Context): Notification {
             val openAppIntent = Intent(context, MainActivity::class.java)

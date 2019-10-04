@@ -1,7 +1,6 @@
 package io.github.bradpatras.pacemonitor.customviews
 
 import android.content.Context
-import android.content.res.Resources
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout

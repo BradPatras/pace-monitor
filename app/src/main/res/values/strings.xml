@@ -2,8 +2,6 @@
     <string name="app_name">Pace Monitor</string>
     <string name="ms_delimiter">:</string>
     <string name="per_unit">/%1$s</string>
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
 
     <!-- Alert stuff -->
     <string name="denied_alert_title">Permissions Required</string>

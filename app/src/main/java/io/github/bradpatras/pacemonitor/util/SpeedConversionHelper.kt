@@ -1,8 +1,5 @@
 package io.github.bradpatras.pacemonitor.util
 
-import io.reactivex.MaybeConverter
-import io.reactivex.Observer
-
 class SpeedConversionHelper {
     companion object {
         fun metersPerSecondToMilePace(metersPerSec: Float): Pair<Int?, Int?> {
