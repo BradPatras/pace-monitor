@@ -62,12 +62,22 @@ class MainFragment : Fragment() {
         viewModel.publishLastReports()
     }
 
+    override fun onResume() {
+        super.onResume()
+        context?.let { startSpeedReportService(it) }
+    }
+
     @Subscribe(sticky = true)
     fun onLocationPermissionGranted(event: PermissionEvents.LocationPermissionGrantedEvent) {
+        EventBus.getDefault().removeStickyEvent(event)
         context?.let { ctx ->
-            val intent = Intent(ctx, SpeedReportService::class.java)
-            ctx.startService(intent)
+            startSpeedReportService(ctx)
         }
+    }
+
+    private fun startSpeedReportService(context: Context) {
+        val intent = Intent(context, SpeedReportService::class.java)
+        context.startService(intent)
     }
 
     private fun speedReportConsumerForPaceView(paceView: PaceView): Consumer<in Float> {

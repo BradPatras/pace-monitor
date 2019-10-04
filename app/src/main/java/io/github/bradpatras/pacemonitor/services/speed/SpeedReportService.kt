@@ -10,6 +10,7 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import io.github.bradpatras.pacemonitor.events.SpeedReportEvents
+import io.github.bradpatras.pacemonitor.util.NotificationHelper
 import org.greenrobot.eventbus.EventBus
 
 private const val REQUEST_INTERVAL: Long = 1000
@@ -106,6 +107,8 @@ class SpeedReportService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (isRunning) return super.onStartCommand(intent, flags, startId)
         isRunning = true
+
+        startForeground(1, NotificationHelper.getNotification(applicationContext))
 
         startLocationRequests()
 

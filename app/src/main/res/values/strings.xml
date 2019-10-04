@@ -10,4 +10,9 @@
     <string name="denied_alert_message">Cannot compute pace without location permissions</string>
     <string name="denied_alert_button">Grant permissions</string>
     <string name="denied_forever_alert_message">Please enable Location permissions in the app settings</string>
+    
+    <string name="notification_title">Pace Monitor</string>
+    <string name="notification_message">Pace monitoring in progress</string>
+    <string name="channel_name">Main</string>
+    <string name="channel_description">Shows when pace monitoring service is running.</string>
 </resources>
