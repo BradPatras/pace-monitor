@@ -106,6 +106,7 @@ class SpeedReportService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (isRunning) return super.onStartCommand(intent, flags, startId)
+
         isRunning = true
 
         startForeground(1, NotificationHelper.getNotification(applicationContext))

@@ -32,7 +32,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.speed.SpeedReportService"/>
+        <service android:name=".services.speed.SpeedReportService"
+            android:stopWithTask="true"/>
 
     </application>
 

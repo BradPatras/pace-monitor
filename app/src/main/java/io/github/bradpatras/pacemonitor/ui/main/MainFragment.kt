@@ -62,11 +62,6 @@ class MainFragment : Fragment() {
         viewModel.publishLastReports()
     }
 
-    override fun onResume() {
-        super.onResume()
-        context?.let { startSpeedReportService(it) }
-    }
-
     @Subscribe(sticky = true)
     fun onLocationPermissionGranted(event: PermissionEvents.LocationPermissionGrantedEvent) {
         EventBus.getDefault().removeStickyEvent(event)

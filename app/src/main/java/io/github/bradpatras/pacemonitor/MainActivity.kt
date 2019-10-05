@@ -27,7 +27,10 @@ class MainActivity : AppCompatActivity() {
             this.window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
                     WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
         PermissionHelper.getInstance(this).checkLocationPermissions {
             EventBus.getDefault().postSticky(PermissionEvents.LocationPermissionGrantedEvent)
         }
