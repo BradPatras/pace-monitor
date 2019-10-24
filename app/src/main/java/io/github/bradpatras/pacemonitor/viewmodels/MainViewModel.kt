@@ -1,5 +1,6 @@
 package io.github.bradpatras.pacemonitor.viewmodels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.github.bradpatras.pacemonitor.events.SpeedReportEvents
 import io.reactivex.subjects.PublishSubject
@@ -10,22 +11,26 @@ class MainViewModel : ViewModel() {
     private var fiveSpeed: Float = 0f
         set(value) {
             field = value
-            fiveSecondSpeedPublishSubject.onNext(value)
+            fiveSecondSpeed.postValue(value)
         }
     private var thirtySpeed: Float = 0f
         set(value) {
             field = value
-            thirtySecondSpeedPublishSubject.onNext(value)
+            thirtySecondSpeed.postValue(value)
         }
     private var sixtySpeed: Float = 0f
         set(value) {
             field = value
-            sixtySecondSpeedPublishSubject.onNext(value)
+            sixtySecondSpeed.postValue(value)
         }
 
     val fiveSecondSpeedPublishSubject: PublishSubject<Float> = PublishSubject.create()
     val thirtySecondSpeedPublishSubject: PublishSubject<Float> = PublishSubject.create()
     val sixtySecondSpeedPublishSubject: PublishSubject<Float> = PublishSubject.create()
+
+    val fiveSecondSpeed: MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
+    val thirtySecondSpeed: MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
+    val sixtySecondSpeed: MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
 
     init {
         EventBus.getDefault().register(this)

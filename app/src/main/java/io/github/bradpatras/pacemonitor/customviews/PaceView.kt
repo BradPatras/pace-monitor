@@ -12,18 +12,15 @@ import java.text.DecimalFormat
 private const val TIME_PLACEHOLDER: String = "--"
 
 class PaceView : ConstraintLayout {
-    private val secondsFormat = DecimalFormat("00")
-
     enum class DistanceUnit(val abbreviation: String) {
         KM("km"),
         MI("mi")
     }
 
+    private val secondsFormat = DecimalFormat("00")
     private var _labelText: String? = ""
 
-    /**
-     * The text above the time labels
-     */
+    // The text above the time labels
     var labelText: String?
         get() = _labelText
         set(value) {
@@ -36,9 +33,6 @@ class PaceView : ConstraintLayout {
             field = value
             unit_tv.text = resources.getString(R.string.per_unit, value.abbreviation)
         }
-
-    var paceMinutesConsumer: Consumer<Int?> = Consumer(this::setMinutes)
-    var paceSecondsConsumer: Consumer<Int?> = Consumer(this::setSeconds)
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -54,10 +48,15 @@ class PaceView : ConstraintLayout {
 
     private fun init(attrs: AttributeSet?, defStyle: Int) {
         View.inflate(context, R.layout.pace_view, this)
-        val a = context.obtainStyledAttributes(attrs, R.styleable.PaceView, defStyle, 0)
-        labelText = a.getString(R.styleable.PaceView_labelText)
+        val labelAttribute = context.obtainStyledAttributes(attrs, R.styleable.PaceView, defStyle, 0)
+        labelText = labelAttribute.getString(R.styleable.PaceView_labelText)
         distanceUnit = distanceUnit
-        a.recycle()
+        labelAttribute.recycle()
+    }
+
+    fun setPace(minutes: Int?, seconds: Int?) {
+        setMinutes(minutes)
+        setSeconds(seconds)
     }
 
     private fun setMinutes(minutes: Int?) {
@@ -70,7 +69,6 @@ class PaceView : ConstraintLayout {
 
     private fun setSeconds(seconds: Int?) {
         if (seconds is Int) {
-
             seconds_tv.text = secondsFormat.format(seconds)
         } else {
             seconds_tv.text = TIME_PLACEHOLDER
