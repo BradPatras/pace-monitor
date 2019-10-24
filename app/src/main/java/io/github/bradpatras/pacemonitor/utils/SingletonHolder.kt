@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.util
+package io.github.bradpatras.pacemonitor.utils
 
 /**
  * Created by bradpatras on 11/24/17.

@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.bradpatras.pacemonitor.customviews.PaceView
 import io.github.bradpatras.pacemonitor.events.PermissionEvents
-import io.github.bradpatras.pacemonitor.services.speed.SpeedReportService
+import io.github.bradpatras.pacemonitor.services.SpeedReportService
 import io.github.bradpatras.pacemonitor.viewmodels.MainViewModel
-import io.github.bradpatras.pacemonitor.util.SpeedConversionHelper
+import io.github.bradpatras.pacemonitor.utils.SpeedConversionHelper
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.main_fragment.*

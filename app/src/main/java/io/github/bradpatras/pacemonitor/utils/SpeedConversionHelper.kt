@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.util
+package io.github.bradpatras.pacemonitor.utils
 
 class SpeedConversionHelper {
     companion object {

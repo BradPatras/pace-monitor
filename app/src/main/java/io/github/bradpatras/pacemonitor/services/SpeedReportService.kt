@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.services.speed
+package io.github.bradpatras.pacemonitor.services
 
 import android.app.Service
 import android.content.Intent
@@ -10,7 +10,7 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import io.github.bradpatras.pacemonitor.events.SpeedReportEvents
-import io.github.bradpatras.pacemonitor.util.NotificationHelper
+import io.github.bradpatras.pacemonitor.utils.NotificationHelper
 import org.greenrobot.eventbus.EventBus
 
 private const val REQUEST_INTERVAL: Long = 1000

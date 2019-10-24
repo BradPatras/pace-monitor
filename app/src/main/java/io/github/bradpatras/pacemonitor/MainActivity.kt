@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import io.github.bradpatras.pacemonitor.events.PermissionEvents
-import io.github.bradpatras.pacemonitor.util.PermissionHelper
+import io.github.bradpatras.pacemonitor.utils.PermissionHelper
 import org.greenrobot.eventbus.EventBus
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             setShowWhenLocked(true)
             setTurnScreenOn(true)
         } else {
+            @Suppress("DEPRECATION")
             this.window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
                     WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
         }

@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.util
+package io.github.bradpatras.pacemonitor.utils
 
 import android.Manifest
 import android.app.Activity

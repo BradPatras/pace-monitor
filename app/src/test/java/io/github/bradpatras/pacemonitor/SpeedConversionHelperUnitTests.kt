@@ -1,6 +1,6 @@
 package io.github.bradpatras.pacemonitor
 
-import io.github.bradpatras.pacemonitor.util.SpeedConversionHelper
+import io.github.bradpatras.pacemonitor.utils.SpeedConversionHelper
 import org.junit.Assert
 import org.junit.Test
 

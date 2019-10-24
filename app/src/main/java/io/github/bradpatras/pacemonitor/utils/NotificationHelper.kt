@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.util
+package io.github.bradpatras.pacemonitor.utils
 
 import android.app.Notification
 import android.app.PendingIntent

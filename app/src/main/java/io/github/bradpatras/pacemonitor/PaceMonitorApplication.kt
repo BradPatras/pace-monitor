@@ -5,7 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import androidx.annotation.RequiresApi
-import io.github.bradpatras.pacemonitor.util.NotificationHelper
+import io.github.bradpatras.pacemonitor.utils.NotificationHelper
 
 class PaceMonitorApplication: Application() {
 
