@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import io.github.bradpatras.pacemonitor.R
-import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.pace_view.view.*
 import java.text.DecimalFormat
 
