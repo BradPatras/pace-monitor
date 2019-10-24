@@ -10,7 +10,7 @@
     <string name="denied_forever_alert_message">Please enable Location permissions in the app settings</string>
     
     <string name="notification_title">Pace Monitoring in progress</string>
-    <string name="notification_message">Tap to stop</string>
+    <string name="notification_message">Tap to open</string>
     <string name="channel_name">Main</string>
     <string name="channel_description">Shows when pace monitoring service is running.</string>
 </resources>
