@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import io.github.bradpatras.pacemonitor.events.PermissionEvents
-import io.github.bradpatras.pacemonitor.ui.main.MainFragment
 import io.github.bradpatras.pacemonitor.util.PermissionHelper
 import org.greenrobot.eventbus.EventBus
 

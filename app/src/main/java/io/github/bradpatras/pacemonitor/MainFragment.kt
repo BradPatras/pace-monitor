@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.ui.main
+package io.github.bradpatras.pacemonitor
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import io.github.bradpatras.pacemonitor.R
 import io.github.bradpatras.pacemonitor.customviews.PaceView
 import io.github.bradpatras.pacemonitor.events.PermissionEvents
 import io.github.bradpatras.pacemonitor.services.speed.SpeedReportService
+import io.github.bradpatras.pacemonitor.viewmodels.MainViewModel
 import io.github.bradpatras.pacemonitor.util.SpeedConversionHelper
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer

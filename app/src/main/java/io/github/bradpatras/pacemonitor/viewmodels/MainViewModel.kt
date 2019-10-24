@@ -1,4 +1,4 @@
-package io.github.bradpatras.pacemonitor.ui.main
+package io.github.bradpatras.pacemonitor.viewmodels
 
 import androidx.lifecycle.ViewModel
 import io.github.bradpatras.pacemonitor.events.SpeedReportEvents
