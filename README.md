@@ -5,5 +5,5 @@ Live monitoring of running pace (minutes per mile) calculated in three ways usin
 - **Karumi:** for permission requests
 - **FusedLocationProvider:** for speed monitoring
 - **EventBus:** used by service to post speed reports
-- ~~**RxJava:** mostly just PublishSubjects and Consumers for handling the stream of speed reports from the service and updating the UI~~
 - **LiveData:** Handling the stream of speed data from the service to the ui (initially implemented with rxjava)
+- ~~**RxJava:** mostly just PublishSubjects and Consumers for handling the stream of speed reports from the service and updating the UI~~
