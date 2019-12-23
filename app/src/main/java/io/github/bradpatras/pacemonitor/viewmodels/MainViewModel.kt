@@ -3,7 +3,6 @@ package io.github.bradpatras.pacemonitor.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.github.bradpatras.pacemonitor.events.SpeedReportEvents
-import io.reactivex.subjects.PublishSubject
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -23,10 +22,6 @@ class MainViewModel : ViewModel() {
             field = value
             sixtySecondSpeed.postValue(value)
         }
-
-    val fiveSecondSpeedPublishSubject: PublishSubject<Float> = PublishSubject.create()
-    val thirtySecondSpeedPublishSubject: PublishSubject<Float> = PublishSubject.create()
-    val sixtySecondSpeedPublishSubject: PublishSubject<Float> = PublishSubject.create()
 
     val fiveSecondSpeed: MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
     val thirtySecondSpeed: MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
