@@ -10,4 +10,4 @@ Live monitoring of running pace (minutes per mile) calculated in three ways usin
 
 &nbsp;
 
-![pace-monitor-sc.webp](screenshot)
+<img src="pm-sc.png" width="200">
